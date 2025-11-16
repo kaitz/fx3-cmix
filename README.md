@@ -5,7 +5,7 @@ The fx2-cmix is a updated implementation of [fx2-cmix](https://github.com/kaitz/
 # Submission Description
 
 ## More detailed changes
-
+The changes below are not 100% accurate.
 ### cmix changes:
 * Adjusted WUS (weight update skipping). Around ~10% of updates are skipped.
 * Windows SFX for testing (PPM in memory)
@@ -42,17 +42,32 @@ The fx2-cmix is a updated implementation of [fx2-cmix](https://github.com/kaitz/
 ## Article order:
 * Moved all articles with title 'Wikipedia:' after images.
 
+## Problems
+Program will not run on Linux kernel 6.0+ Same problem as with all previous versions. That is, Ubuntu 22.04 LTS version and onwards.
+If you downgrade the kernel version to an earlier version, i.e. below 6.0, the program will work.
+A compatible or similar CPU like an i5-4460 is also required.
+
 # Authors
 * Kaido Orav
 
 # Google Cloud Compute Engine parameters
+Support for Ubuntu 20.04 LTS ended on May 2025, so not possible to test. Version is unlisted.
 
 # Results
+Below is the fx3-cmix result:
+
+| Metric | Value |
+| --- | ----------- |
+| fx3-cmix compressor's executable file size (S1)| 443440 bytes |
+| [fx3-cmix self-extracting archive](https://drive.google.com/drive/folders/1tX0Wmowj848LS7H9zXB4qqfqyMAUNs7s) size (S2)| 109226219 bytes |
+| Total size (S) | 109669659 bytes |
+| Previous record (L) | 110793128 bytes |
+| fx3-cmix improvement (1 - S/L) | 1,014% |
 
 # Time
 
 # Instructions
-The installation and usage instructions for fx2-cmix are the same as for fast-cmix.
+The installation and usage instructions for fx3-cmix are the same as for fast-cmix.
 
 One important note: it is recommended to change one variable in the source code for PPM. From line 26 in src/models/ppmd.cpp:
 
@@ -68,21 +83,21 @@ bool mmap_to_disk = true;
 
 This variable is set to true by default, to comply with the Hutter Prize RAM limit.
 
-# Installing packages required for compiling fx2-cmix compressor from sources on Ubuntu
-Building fx2-cmix compressor from sources requires clang-17, upx-ucl, and make packages.
+# Installing packages required for compiling fx3-cmix compressor from sources on Ubuntu
+Building fx3-cmix compressor from sources requires clang-17, upx-ucl, and make packages.
 On Ubuntu, these packages can be installed by running the following scripts:
 ```bash
 ./install_tools/install_upx.sh
 ./install_tools/install_clang-17.sh
 ```
 
-# Compiling fx2-cmix compressor from sources
-A bash script is provided for compiling fx2-cmix compressor from sources on Ubuntu. This script places the fx2-cmix executable file named as `cmix` in `./run` directory. The script can be run as
+# Compiling fx3-cmix compressor from sources
+A bash script is provided for compiling fx3-cmix compressor from sources on Ubuntu. This script places the fx3-cmix executable file named as `cmix` in `./run` directory. The script can be run as
 ```bash
 ./build_and_construct_comp.sh
 ```
 
-# Running fx2-cmix compressor
+# Running fx3-cmix compressor
 To run the cmix-hp compressor use
 ```bash
 cd ./run
@@ -90,7 +105,7 @@ cmix -e <PATH_TO_ENWIK9> enwik9.comp
 ```
 `enwik9.comp` is used to store intermediate data output. The final decompressor will be created as a file named `archive9`.
 
-# Running fx2-cmix decompressor
+# Running fx3-cmix decompressor
 The compressor is expected to output an executable file named `archive9` in the same directory (`./run`). The file `archive9` when executed is expected to reproduce the original enwik9 as a file named `enwik9_restored`. The executable file `archive9` should be launched without argments from the directory containing it.
 ```bash
 cd ./run
