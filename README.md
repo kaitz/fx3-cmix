@@ -4,16 +4,18 @@ The fx2-cmix is a updated implementation of [fx2-cmix](https://github.com/kaitz/
 
 # Submission Description
 
+Unsubmitted.
+
 ## More detailed changes
 The changes below are not 100% accurate.
 ### cmix changes:
 * Adjusted WUS (weight update skipping). Around ~10% of updates are skipped.
 * Windows SFX for testing (PPM in memory)
-* Removed 16 predictors
-* Removed 4 mixers
-* LSTM cell count reduced by ~30.
+* Generates 6 predictions
+* Uses 16 mixers
+* PPM model is in memory. Memory size reduced to 1,750MB
 
-### fxcm changes:
+### fxcm changes (not up to date):
 * Add ~487 predictions to cmix fp mixers
 * fxcm has about ~610 predictions
 * Known dictionary words are compared with their codeword. Previously, text strings were compared.
@@ -42,29 +44,28 @@ The changes below are not 100% accurate.
 ## Article order:
 * Moved all articles with title 'Wikipedia:' after images.
 
-## Problems
-Program will not run on Linux kernel 6.0+ Same problem as with all previous versions. That is, Ubuntu 22.04 LTS version and onwards.
-If you downgrade the kernel version to an earlier version, i.e. below 6.0, the program will work.
-A compatible or similar CPU like an i5-4460 is also required.
-
 # Authors
 * Kaido Orav
 
 # Google Cloud Compute Engine parameters
-Support for Ubuntu 20.04 LTS ended on May 2025, so not possible to test. Version is unlisted.
+Not tested.
 
 # Results
-Below is the fx3-cmix result:
+Below is the fx3-cmix result (Windows executable):
 
 | Metric | Value |
 | --- | ----------- |
-| fx3-cmix compressor's executable file size (S1)| 443440 bytes |
-| [fx3-cmix self-extracting archive](https://drive.google.com/drive/folders/1tX0Wmowj848LS7H9zXB4qqfqyMAUNs7s) size (S2)| 109226219 bytes |
-| Total size (S) | 109669659 bytes |
+| fx3-cmix compressor's executable file size (S1)| 437663 bytes |
+| [fx3-cmix self-extracting archive]() size (S2)| 109297964 bytes |
+| Total size (S) | 109735627 bytes |
 | Previous record (L) | 110793128 bytes |
-| fx3-cmix improvement (1 - S/L) | 1,014% |
+| fx3-cmix improvement (1 - S/L) | 0,954482% |
+| --- | --- |
+|Running time|	46,532 hours (adjusted from score 800 time 81,43h)|
+|RAM max usage|	~10058856 kB|
 
 # Time
+Table above.
 
 # Instructions
 The installation and usage instructions for fx3-cmix are the same as for fast-cmix.
